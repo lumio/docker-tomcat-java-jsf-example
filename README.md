@@ -10,6 +10,8 @@ This is a simple example for running a docker container with tomcat and java.
 
 - [Install docker-compose on your machine.][install-docker-compose]
 
+- [Install gradle on your machine.][install-gradle]
+
 - Clone this repository.
 
 ``` bash
@@ -20,6 +22,12 @@ $ git clone https://github.com/mhilker/docker-tomcat-java-example
 
 ``` bash
 $ cd docker-tomcat-java-example
+```
+
+- Build the project.
+
+``` bash
+$ gradle build
 ```
 
 - Start the stack.
@@ -45,3 +53,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [install-docker]: https://docs.docker.com/engine/installation
 [install-docker-compose]: https://docs.docker.com/compose/install
+[install-gradle]: https://gradle.org/install
