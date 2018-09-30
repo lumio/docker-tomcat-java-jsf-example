@@ -27,7 +27,7 @@ $ cd docker-tomcat-java-example
 - Build the project.
 
 ``` bash
-$ gradle build
+$ ./gradlew build
 ```
 
 - Start the stack.
