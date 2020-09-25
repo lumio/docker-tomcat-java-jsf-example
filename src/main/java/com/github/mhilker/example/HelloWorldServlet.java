@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
  * This servlet responses with "Hello World!" to GET requests.
  */
 public class HelloWorldServlet extends HttpServlet {
-	
+
 	/**
 	 * Write "Hello World!" to the response.
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @throws ServletException
@@ -22,9 +22,9 @@ public class HelloWorldServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter writer = response.getWriter();
-		
+
 		writer.println("Hello World!");
-		writer.close();			
+		writer.close();
 	}
-	
+
 }
