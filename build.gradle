@@ -6,7 +6,7 @@ repositories {
 }
 
 dependencies {
-       providedCompile 'org.apache.tomcat:tomcat-servlet-api:8.5.15'
+       providedCompile 'org.apache.tomcat:tomcat-servlet-api:9.0.38'
 }
 
 jar {
