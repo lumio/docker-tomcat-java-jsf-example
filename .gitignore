@@ -3,5 +3,6 @@
 /.gradle/
 /.settings/
 /.idea/
+/.vscode
 /build/
 /*.iml
