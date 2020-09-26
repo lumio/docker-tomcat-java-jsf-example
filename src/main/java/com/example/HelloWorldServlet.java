@@ -7,13 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * This servlet responses with "Hello World!" to GET requests.
- */
 public class HelloWorldServlet extends HttpServlet {
 
 	/**
-	 * Write "Hello World!" to the response.
+	 * Write a hello world HTML page
 	 *
 	 * @param request
 	 * @param response
