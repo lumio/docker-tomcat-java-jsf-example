@@ -23,7 +23,16 @@ public class HelloWorldServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter writer = response.getWriter();
 
-		writer.println("Hello World oida!");
+		writer.println("<!doctype html>");
+		writer.println("<html>");
+		writer.println("<head>");
+		writer.println("<title>Hello world</title>");
+		writer.println("</head>");
+		writer.println("<body>");
+		writer.println("<h1>Hello world</h1>");
+		writer.println("</body>");
+		writer.println("</html>");
+
 		writer.close();
 	}
 
