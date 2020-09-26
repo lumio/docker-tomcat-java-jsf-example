@@ -1,4 +1,8 @@
-FROM tomcat:9.0-jdk15-openjdk-buster
+FROM gradle:6.6-jdk14 AS build
+COPY . /app/
+WORKDIR /app
+RUN gradle build --warning-mode all
 
-RUN ["rm", "-fr", "/usr/local/tomcat/webapps/ROOT"]
-COPY ./build/libs/docker-tomcat-java-example.war /usr/local/tomcat/webapps/ROOT.war
+FROM tomcat:9.0-jdk14-openjdk-buster AS runtime
+RUN ["rm", "-rf", "/usr/local/tomcat/webapps/ROOT"]
+COPY --from=build /app/build/libs/java-webapp.war /usr/local/tomcat/webapps/ROOT.war
