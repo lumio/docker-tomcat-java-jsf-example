@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+  <title>RichFaces-Komponenten - Demo</title>
+</h:head>
+
+<h:body>
+  <h:form>
+    <h1>Inputs</h1>
+    <h:panelGrid columns="2" border="1">
+
+      <h:outputLabel value="p:textEditor" />
+      <p:textEditor />
+
+      <h:outputLabel value="p:fileUpload" />
+      <p:fileUpload mode="simple" skinSimple="true"/>
+
+      <h:outputLabel value="p:inplace" />
+      <p:inplace id="basic">
+        <p:inputText value="Edit Me" />
+      </p:inplace>
+
+      <h:outputLabel value="p:spinner" />
+      <p:spinner min="1900" max="2013" step="2" />
+
+      <h:outputLabel value="p:slider" />
+      <div>
+        <p:inputText id="txt1" value="#{sliderView.number1}" />
+        <p:slider for="txt1" minValue="1900" maxValue="2013" step="2" />
+      </div>
+
+    </h:panelGrid>
+  </h:form>
+
+  <h3>p:panel</h3>
+  <p:panel>
+    <f:facet name="header">
+      <em>Info</em>
+    </f:facet>
+
+    <p>Just a simple text</p>
+  </p:panel>
+
+  <h3>p:accordionPanel</h3>
+  <p:accordionPanel>
+    <p:tab title="Item 1">
+      Inhalt 1
+    </p:tab>
+    <p:tab title="Item 2">
+      Inhalt 2
+    </p:tab>
+    <p:tab title="Item 3">
+      Inhalt 3
+    </p:tab>
+  </p:accordionPanel>
+
+  <h3>p:tabView</h3>
+  <p:tabView>
+    <p:tab title="Title 1">
+      <p>Content 1</p>
+    </p:tab>
+
+    <p:tab title="Title 2">
+      <p>Content 2</p>
+    </p:tab>
+  </p:tabView>
+</h:body>
+</html>
