@@ -70,9 +70,9 @@ tr.gerade {
   background-color: #FFF;
 }
 
-td.bild img {
-  height: 100px;
+td > img {
   width: 100px;
+  height: auto;
 }
 
 td.nr {

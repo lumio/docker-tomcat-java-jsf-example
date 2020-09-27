@@ -9,6 +9,7 @@ repositories {
 
 dependencies {
     providedCompile 'org.apache.tomcat:tomcat-servlet-api:9.0.38'
+    compile group: 'org.primefaces', name: 'primefaces', version: '7.0'
     compile group: 'com.sun.faces', name: 'jsf-api', version: '2.2.14'
     compile group: 'com.sun.faces', name: 'jsf-impl', version: '2.2.14'
     compile group: 'javax.servlet.jsp.jstl', name: 'javax.servlet.jsp.jstl-api', version: '1.2.1'
