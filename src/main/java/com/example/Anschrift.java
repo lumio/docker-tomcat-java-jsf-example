@@ -13,11 +13,11 @@ import javax.faces.bean.ApplicationScoped;
 @ManagedBean
 @ApplicationScoped
 public class Anschrift {
-    private String name = "Filzprodukte Zander GmbH";
-    private String strasse = "Märkische Straße";
-    private int hausnummer = 15;
-    private String plz = "32805";
-    private String ort = "Horn-Bad Meinberg";
+  private String name = "Filzprodukte Zander GmbH";
+  private String strasse = "Märkische Straße";
+  private int hausnummer = 15;
+  private String plz = "32805";
+  private String ort = "Horn-Bad Meinberg";
 
   /**
    * Creates a new instance of Adresse

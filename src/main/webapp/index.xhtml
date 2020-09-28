@@ -8,6 +8,7 @@
   xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+  <meta charset="UTF-8" />
   <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
   <title>Artikelverwaltung</title>
 </h:head>
@@ -50,30 +51,67 @@
     </p:column>
   </p:dataTable>
 
-  <!--
-    <table id="artikel">
-      <tr>
-        <th>Nr</th>
-        <th>Name</th>
-        <th>Beschreibung</th>
-        <th>Bild</th>
-      </tr>
-      <tr>
-        <td class="spalte1">1</td>
-        <td>Pantoffeln "Rudolph"</td>
-        <td>Wunderschöne Filzpantoffeln</td>
-        <td><img src="filzschuhe.jpg" alt="Auf dem Bild sind Filzschuhe zu sehen." 
-                 width="100px" height="100px" title="Filzschuhe 'Rudolph'" /></td>
-      </tr>
-      <tr>
-        <td class="spalte1">2</td>
-        <td>Handtasche "Cosmopolita"</td>
-        <td>Modische Filz-Handtasche mit praktischer Cocktailglas-Halterung</td>
-        <td><img src="handtasche.jpg" alt="Auf dem Bild ist eine Filzhandtasche zu sehen." 
-                 width="100px" height="100px" title="Handtasche 'Cosmopolita'" /></td>
-      </tr>
-    </table>
-    -->
+  <h1>Artikelverwaltung</h1>
+    <h2>Artikel erfassen</h2>
+    <h:form>
+      <h:panelGrid columns="3">
+        <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
+                       rendered="#{artikelController.index > 0}"/>
+        <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
+        <h:commandLink value="vor" action="#{artikelController.vor()}"/>
+        <h:outputText value=" " />
+
+        <h:outputLabel value="Nr:" for="nr"/>
+        <h:inputText id="nr" value="#{artikelController.artikel.nr}" required="true">
+          <f:validateLongRange minimum="1000"/>
+        </h:inputText>
+        <h:message styleClass="error" for="nr"/>
+
+        <h:outputLabel value="Test:" for="Testfield"/>
+        <h:inputText
+          id="testField"
+          value="#{artikelController.artikel.testField}"
+          validator="#{artikelController.validateTestField}"
+        />
+        <h:message styleClass="error" for="testField"/>
+
+        <h:outputLabel value="Name:" for="name"/>
+        <h:inputText id="name" value="#{artikelController.artikel.name}" size="40" required="true">
+          <p:ajax event="keyup" update="name" />
+        </h:inputText>
+        <h:message styleClass="error" for="name"/>
+
+        <h:outputLabel value="Beschreibung: " for="text"/>
+        <h:inputText id="text" value="#{artikelController.artikel.text}" size="40"/>
+        <h:outputText value=" " />
+
+        <h:outputLabel value="Bild-Datei: " for="bilddatei"/>
+        <h:inputText id="bilddatei" value="#{artikelController.artikel.bild}" size="40">
+             <f:validateRegex pattern="^[a-zA-Z0-9]+.(jpg|jpeg|gif|png)$"/>
+        </h:inputText>
+        <h:outputText value=" " />
+
+        <h:outputLabel rendered="false" value="Erstellt am: " for="erstellt"/>
+        <h:inputText rendered="false" id="erstellt" value="#{artikelController.artikel.erstelldatum}" size="10"/>
+        <h:outputText value=" " />
+
+        <h:outputLabel value="Bild: " for="bild"/>
+        <h:graphicImage id="bild" url="#{artikelController.artikel.bild}" height="100" width="100"/>
+        <h:outputText value=" " />
+
+        <h:outputLabel value="Verfügbar ab: " for="verfuegbarAb"/>
+        <p:datePicker id="verfuegbarAb" value="#{artikelController.artikel.verfuegbarAb}" />
+        <h:outputText value=" " />
+
+        <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
+                       rendered="#{artikelController.index > 0}"/>
+        <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
+        <h:commandLink value="vor" action="#{artikelController.vor()}" />
+        <h:outputText value=" " />
+      </h:panelGrid>
+
+      <h:commandButton value="test" />
+    </h:form>
 
   <p id="fussnote">Bitte beachten Sie: <br /> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
