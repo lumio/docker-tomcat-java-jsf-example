@@ -42,6 +42,10 @@ public class Artikel {
         this.name = name;
     }
 
+    public void setNr(int nr) {
+        this.nr = nr;
+    }
+
     public int getNr() {
         return nr;
     }

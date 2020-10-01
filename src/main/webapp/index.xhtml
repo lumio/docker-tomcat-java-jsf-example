@@ -22,6 +22,71 @@
   </p>
 
   <h1>Artikelverwaltung</h1>
+    <h2>Artikel erfassen</h2>
+    <h:form>
+      <h:panelGrid columns="3">
+        <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
+                       rendered="#{artikelController.index > 0}"/>
+        <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
+        <h:commandLink value="vor" action="#{artikelController.vor()}"/>
+        <h:outputText value=" " />
+
+        <h:outputLabel value="Nr:" for="nr"/>
+        <h:inputText label="Nr" id="nr" value="#{artikelController.artikel.nr}" required="true">
+          <f:validateLongRange minimum="1000"/>
+        </h:inputText>
+        <h:message styleClass="error" for="nr"/>
+
+        <h:outputLabel value="Test:" for="testField"/>
+        <h:inputText
+          id="testField"
+          label="Test Feld"
+          value="#{artikelController.artikel.testField}"
+          validator="#{artikelController.validateTestField}"
+        />
+        <h:message styleClass="error" for="testField"/>
+
+        <h:outputLabel value="Name:" for="name"/>
+        <h:inputText id="name" value="#{artikelController.artikel.name}" size="40" required="true">
+          <p:ajax event="keyup" update="name" />
+        </h:inputText>
+        <h:message styleClass="error" for="name"/>
+
+        <h:outputLabel value="Beschreibung: " for="text"/>
+        <h:inputText id="text" value="#{artikelController.artikel.text}" size="40"/>
+        <h:outputText value=" " />
+
+        <h:outputLabel value="Bild-Datei: " for="bilddatei"/>
+        <h:inputText id="bilddatei" value="#{artikelController.artikel.bild}" size="40">
+             <f:validateRegex pattern="^[a-zA-Z0-9]+.(jpg|jpeg|gif|png)$"/>
+        </h:inputText>
+        <h:outputText value=" " />
+
+        <h:outputLabel rendered="false" value="Erstellt am: " for="erstellt"/>
+        <h:inputText rendered="false" id="erstellt" value="#{artikelController.artikel.erstelldatum}" size="10">
+          <f:convertDateTime type="date" dateStyle="short" />
+        </h:inputText>
+        <h:message styleClass="error" for="erstellt"/>
+
+        <h:outputLabel value="Bild: " for="bild"/>
+        <h:graphicImage id="bild" url="#{artikelController.artikel.bild}" height="100" width="100"/>
+        <h:outputText value=" " />
+
+        <h:outputLabel value="Verfügbar ab: " for="verfuegbarAb"/>
+        <p:datePicker id="verfuegbarAb" value="#{artikelController.artikel.verfuegbarAb}" />
+        <h:outputText value=" " />
+
+        <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
+                       rendered="#{artikelController.index > 0}"/>
+        <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
+        <h:commandLink value="vor" action="#{artikelController.vor()}" />
+        <h:outputText value=" " />
+      </h:panelGrid>
+
+      <h:commandButton value="test" />
+    </h:form>
+
+  <h1>Artikelverwaltung</h1>
 
   <h2>Übersicht über alle Artikel</h2>
 
@@ -50,68 +115,6 @@
       </h:form>
     </p:column>
   </p:dataTable>
-
-  <h1>Artikelverwaltung</h1>
-    <h2>Artikel erfassen</h2>
-    <h:form>
-      <h:panelGrid columns="3">
-        <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
-                       rendered="#{artikelController.index > 0}"/>
-        <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
-        <h:commandLink value="vor" action="#{artikelController.vor()}"/>
-        <h:outputText value=" " />
-
-        <h:outputLabel value="Nr:" for="nr"/>
-        <h:inputText id="nr" value="#{artikelController.artikel.nr}" required="true">
-          <f:validateLongRange minimum="1000"/>
-        </h:inputText>
-        <h:message styleClass="error" for="nr"/>
-
-        <h:outputLabel value="Test:" for="Testfield"/>
-        <h:inputText
-          id="testField"
-          value="#{artikelController.artikel.testField}"
-          validator="#{artikelController.validateTestField}"
-        />
-        <h:message styleClass="error" for="testField"/>
-
-        <h:outputLabel value="Name:" for="name"/>
-        <h:inputText id="name" value="#{artikelController.artikel.name}" size="40" required="true">
-          <p:ajax event="keyup" update="name" />
-        </h:inputText>
-        <h:message styleClass="error" for="name"/>
-
-        <h:outputLabel value="Beschreibung: " for="text"/>
-        <h:inputText id="text" value="#{artikelController.artikel.text}" size="40"/>
-        <h:outputText value=" " />
-
-        <h:outputLabel value="Bild-Datei: " for="bilddatei"/>
-        <h:inputText id="bilddatei" value="#{artikelController.artikel.bild}" size="40">
-             <f:validateRegex pattern="^[a-zA-Z0-9]+.(jpg|jpeg|gif|png)$"/>
-        </h:inputText>
-        <h:outputText value=" " />
-
-        <h:outputLabel rendered="false" value="Erstellt am: " for="erstellt"/>
-        <h:inputText rendered="false" id="erstellt" value="#{artikelController.artikel.erstelldatum}" size="10"/>
-        <h:outputText value=" " />
-
-        <h:outputLabel value="Bild: " for="bild"/>
-        <h:graphicImage id="bild" url="#{artikelController.artikel.bild}" height="100" width="100"/>
-        <h:outputText value=" " />
-
-        <h:outputLabel value="Verfügbar ab: " for="verfuegbarAb"/>
-        <p:datePicker id="verfuegbarAb" value="#{artikelController.artikel.verfuegbarAb}" />
-        <h:outputText value=" " />
-
-        <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
-                       rendered="#{artikelController.index > 0}"/>
-        <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
-        <h:commandLink value="vor" action="#{artikelController.vor()}" />
-        <h:outputText value=" " />
-      </h:panelGrid>
-
-      <h:commandButton value="test" />
-    </h:form>
 
   <p id="fussnote">Bitte beachten Sie: <br /> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
