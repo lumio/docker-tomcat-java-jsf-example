@@ -86,36 +86,6 @@
       <h:commandButton value="test" />
     </h:form>
 
-  <h1>Artikelverwaltung</h1>
-
-  <h2>Übersicht über alle Artikel</h2>
-
-  <p:dataTable var="artikel" value="#{shop.sortiment}">
-    <p:column>
-      <f:facet name="header">Nr</f:facet>
-      <h:outputText value="#{artikel.nr}" />
-    </p:column>
-    <p:column>
-      <f:facet name="header">Name</f:facet>
-      <h:outputText value="#{artikel.name}" />
-    </p:column>
-    <p:column>
-      <f:facet name="header">Beschreibung</f:facet>
-      <h:outputText value="#{artikel.text}" />
-    </p:column>
-    <p:column>
-      <f:facet name="header">Bild</f:facet>
-      <h:graphicImage url="#{artikel.bild}" />
-    </p:column>
-    <p:column>
-      <h:form>
-        <h:commandLink action="#{shop.sortiment.remove(artikel)}">
-          <img src="x.png" />
-        </h:commandLink>
-      </h:form>
-    </p:column>
-  </p:dataTable>
-
   <p id="fussnote">Bitte beachten Sie: <br /> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
 

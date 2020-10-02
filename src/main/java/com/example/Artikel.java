@@ -1,12 +1,18 @@
 package com.example;
+// import javax.persistence.Entity;
+// import javax.persistence.Temporal;
+// import javax.persistence.TemporalType;
 import java.util.Date;
 
+// @Entity
 public class Artikel {
 
+    // @javax.persistence.Id
     private int nr;
     private String name;
     private String text;
     private String bild;
+    // @Temporal(TemporalType.DATE)
     private Date verfuegbarAb;
     private String testField;
 
