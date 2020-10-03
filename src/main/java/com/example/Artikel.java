@@ -1,19 +1,19 @@
 package com.example;
-// import javax.persistence.Entity;
+import javax.persistence.Entity;
 // import javax.persistence.Temporal;
 // import javax.persistence.TemporalType;
 import java.util.Date;
 
-// @Entity
+@Entity
 public class Artikel {
 
-    // @javax.persistence.Id
+    @javax.persistence.Id
     private int nr;
     private String name;
     private String text;
     private String bild;
     // @Temporal(TemporalType.DATE)
-    private Date verfuegbarAb;
+    // private Date verfuegbarAb;
     private String testField;
 
     public Artikel() {
@@ -36,7 +36,7 @@ public class Artikel {
         this.name = name;
         this.text = text;
         this.bild = bild;
-        this.verfuegbarAb = verfuegbarAb;
+        // this.verfuegbarAb = verfuegbarAb;
         this.testField = "foo";
     }
 
@@ -72,12 +72,12 @@ public class Artikel {
         this.bild = bild;
     }
 
-    public Date getVerfuegbarAb() {
-        return verfuegbarAb;
-    }
+    // public Date getVerfuegbarAb() {
+    //     return verfuegbarAb;
+    // }
 
-    public void setVerfuegbarAb(Date verfuegbarAb) {
-        this.verfuegbarAb = verfuegbarAb;
-    }
+    // public void setVerfuegbarAb(Date verfuegbarAb) {
+    //     this.verfuegbarAb = verfuegbarAb;
+    // }
 
 }

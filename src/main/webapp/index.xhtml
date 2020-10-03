@@ -72,9 +72,6 @@
         <h:graphicImage id="bild" url="#{artikelController.artikel.bild}" height="100" width="100"/>
         <h:outputText value=" " />
 
-        <h:outputLabel value="Verfügbar ab: " for="verfuegbarAb"/>
-        <p:datePicker id="verfuegbarAb" value="#{artikelController.artikel.verfuegbarAb}" />
-        <h:outputText value=" " />
 
         <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
                        rendered="#{artikelController.index > 0}"/>

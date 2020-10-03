@@ -1,10 +1,12 @@
 package com.example;
+
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
+// import java.util.Date;
+// import java.util.GregorianCalendar;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -17,12 +19,14 @@ import javax.persistence.Query;
 @ManagedBean()
 @ApplicationScoped
 public class Shop {
+
   // private List<Artikel> sortiment = new ArrayList<Artikel>();
   private List<Benutzer> benutzer = new ArrayList<Benutzer>();
   private static Shop instance = new Shop();
   private final static EntityManagerFactory emf = Persistence.createEntityManagerFactory("onlineshop");
 
   public Shop() {
+
     // sortiment.add(new Artikel(1000, "Pantoffeln \"Rudolph\"",
     //         "Wunderschöne Filzpantoffeln", "filzschuhe.jpg", (new GregorianCalendar(2012, 11, 23).getTime())));
     // sortiment.add(new Artikel(2000, "Handtasche \"Cosmopolita\"",
@@ -38,6 +42,7 @@ public class Shop {
     EntityManager em = emf.createEntityManager();
     Query q = em.createQuery("select a from Artikel a");
     List<Artikel> artikel = q.getResultList();
+    System.out.print(artikel);
     return artikel;
     // return sortiment;
   }
