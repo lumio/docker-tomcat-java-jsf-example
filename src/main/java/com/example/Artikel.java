@@ -14,17 +14,8 @@ public class Artikel {
     private String bild;
     // @Temporal(TemporalType.DATE)
     // private Date verfuegbarAb;
-    private String testField;
 
     public Artikel() {
-    }
-
-    public String getTestField() {
-        return testField;
-    }
-
-    public void setTestField(String testField) {
-        this.testField = testField;
     }
 
     public Artikel(int nr, String name, String text, String bild) {
@@ -37,7 +28,6 @@ public class Artikel {
         this.text = text;
         this.bild = bild;
         // this.verfuegbarAb = verfuegbarAb;
-        this.testField = "foo";
     }
 
     public String getName() {

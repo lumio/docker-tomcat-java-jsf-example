@@ -37,15 +37,6 @@
         </h:inputText>
         <h:message styleClass="error" for="nr"/>
 
-        <h:outputLabel value="Test:" for="testField"/>
-        <h:inputText
-          id="testField"
-          label="Test Feld"
-          value="#{artikelController.artikel.testField}"
-          validator="#{artikelController.validateTestField}"
-        />
-        <h:message styleClass="error" for="testField"/>
-
         <h:outputLabel value="Name:" for="name"/>
         <h:inputText id="name" value="#{artikelController.artikel.name}" size="40" required="true">
           <p:ajax event="keyup" update="name" />

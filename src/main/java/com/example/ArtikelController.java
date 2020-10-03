@@ -31,14 +31,14 @@ public class ArtikelController {
     return index;
   }
 
-  public void validateTestField(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-    String testField = (String) value;
-    System.out.println(testField);
-    if (!testField.endsWith("bar")) {
-      throw new ValidatorException(
-              new FacesMessage(FacesMessage.SEVERITY_ERROR, "should end with bar", "some details")
-      );
-    }
-  }
+  // public void validateTestField(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+  //   String testField = (String) value;
+  //   System.out.println(testField);
+  //   if (!testField.endsWith("bar")) {
+  //     throw new ValidatorException(
+  //             new FacesMessage(FacesMessage.SEVERITY_ERROR, "should end with bar", "some details")
+  //     );
+  //   }
+  // }
 
 }
