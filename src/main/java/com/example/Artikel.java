@@ -1,11 +1,21 @@
+package com.example;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
+@Entity
 public class Artikel {
 
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int nr;
     private String name;
     private String text;
     private String bild;
+    @Temporal(TemporalType.DATE)
     private Date verfuegbarAb;
 
     public Artikel() {
@@ -29,6 +39,10 @@ public class Artikel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setNr(int nr) {
+        this.nr = nr;
     }
 
     public int getNr() {
