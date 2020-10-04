@@ -25,6 +25,10 @@
     <h2>Artikel erfassen</h2>
     <h:form>
       <h:panelGrid columns="3">
+        <h:commandLink id="neuerArtikel" value="New article" action="#{artikelController.add()}" />
+        <div></div>
+        <div></div>
+
         <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
                        rendered="#{artikelController.index > 0}"/>
         <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
@@ -33,7 +37,7 @@
 
         <h:outputLabel value="Nr:" for="nr"/>
         <h:inputText label="Nr" id="nr" value="#{artikelController.artikel.nr}" required="true">
-          <f:validateLongRange minimum="1000"/>
+          <f:validateLongRange minimum="1"/>
         </h:inputText>
         <h:message styleClass="error" for="nr"/>
 
@@ -69,6 +73,8 @@
         <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
         <h:commandLink value="vor" action="#{artikelController.vor()}" />
         <h:outputText value=" " />
+
+        <h:commandButton value="Speichern" action="#{artikelController.save()}" />
       </h:panelGrid>
 
       <h:commandButton value="test" />

@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -36,6 +37,15 @@ public class Shop {
     //         "Zwei putzige Hasen aus Filz zur Dekoration", "hasen.png", (new GregorianCalendar(2013, 11, 31).getTime())));
     benutzer.add(new Benutzer("koch", "123"));
     benutzer.add(new Benutzer("zander", "123"));
+  }
+
+  public void saveArtikel(Artikel neuerArtikel) {
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction t = em.getTransaction();
+    t.begin();
+    em.merge(neuerArtikel);
+    t.commit();
+    em.close();
   }
 
   public List<Artikel> getSortiment() {

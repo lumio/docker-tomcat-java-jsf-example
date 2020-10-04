@@ -1,6 +1,13 @@
 version: "3"
 
 services:
+  postgres:
+    image: postgres:9.6.16-alpine
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./dump:/dump
+
   tomcat:
     build:
       context: .

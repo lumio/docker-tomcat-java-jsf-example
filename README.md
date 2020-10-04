@@ -3,6 +3,7 @@
 [![Software License][ico-license]](LICENSE.md)
 
 This repository is based on https://github.com/mhilker/docker-tomcat-java-example
+It is just a little playground for a Uni course.
 
 ## Get it up and running
 
