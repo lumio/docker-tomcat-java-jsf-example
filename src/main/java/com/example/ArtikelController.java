@@ -13,6 +13,7 @@ public class ArtikelController {
 
   private int index = 0;
   private Artikel neuerArtikel = null;
+  private Bewertung neueBewertung = null;
 
   public String add() {
     return "edit";
@@ -23,6 +24,19 @@ public class ArtikelController {
       this.neuerArtikel = new Artikel();
     }
     return this.neuerArtikel;
+  }
+
+  public Bewertung getNeueBewertung() {
+    if (neueBewertung == null) {
+      this.neueBewertung = new Bewertung();
+    }
+    return this.neueBewertung;
+  }
+
+  public String bewertungSpeichern() {
+    Shop.getInstance().saveRatingForArticle(neueBewertung, getArtikel());
+    this.neueBewertung = null;
+    return null;
   }
 
   public String save() {

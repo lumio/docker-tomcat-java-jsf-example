@@ -3,6 +3,7 @@
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html
   xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:f="http://xmlns.jcp.org/jsf/core"
   xmlns:p="http://primefaces.org/ui">
@@ -26,8 +27,8 @@
     <h:form>
       <h:panelGrid columns="3">
         <h:commandLink id="neuerArtikel" value="New article" action="#{artikelController.add()}" />
-        <div></div>
-        <div></div>
+        <h:outputText value=" " />
+        <h:outputText value=" " />
 
         <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
                        rendered="#{artikelController.index > 0}"/>
@@ -40,6 +41,27 @@
           <f:validateLongRange minimum="1"/>
         </h:inputText>
         <h:message styleClass="error" for="nr"/>
+
+        <h:outputText value="Bewertung:" for="bewertung"/>
+        <h:panelGrid column="1">
+          <h:selectOneRadio value="#{artikelController.neueBewertung.sterne}">
+            <f:selectItem itemLabel="1 Stern" itemValue="1" />
+            <f:selectItem itemLabel="2 Sterne" itemValue="2" />
+            <f:selectItem itemLabel="3 Sterne" itemValue="3" />
+            <f:selectItem itemLabel="4 Sterne" itemValue="4" />
+            <f:selectItem itemLabel="5 Sterne" itemValue="5" />
+          </h:selectOneRadio>
+          <h:inputTextarea value="#{artikelController.neueBewertung.kommentar}" />
+          <h:commandButton value="Speichern" action="#{artikelController.bewertungSpeichern}" />
+
+          <ui:repeat value="#{artikelController.artikel.bewertungen}" var="bewertung">
+            <div>
+              <h:outputText value="#{bewertung.sterne} Stern(e)" />
+              <p><h:outputText value="#{bewertung.kommentar}" /></p>
+            </div>
+          </ui:repeat>
+        </h:panelGrid>
+        <h:outputText value=" " />
 
         <h:outputLabel value="Name:" for="name"/>
         <h:inputText id="name" value="#{artikelController.artikel.name}" size="40" required="true">
@@ -57,8 +79,8 @@
         </h:inputText>
         <h:outputText value=" " />
 
-        <h:outputLabel rendered="false" value="Erstellt am: " for="erstellt"/>
-        <h:inputText rendered="false" id="erstellt" value="#{artikelController.artikel.erstelldatum}" size="10">
+        <h:outputLabel value="Verfügbar ab:" for="verfuegbarAb"/>
+        <h:inputText id="verfuegbarAb" value="#{artikelController.artikel.verfuegbarAb}" size="10">
           <f:convertDateTime type="date" dateStyle="short" />
         </h:inputText>
         <h:message styleClass="error" for="erstellt"/>
@@ -74,10 +96,8 @@
         <h:commandLink value="vor" action="#{artikelController.vor()}" />
         <h:outputText value=" " />
 
-        <h:commandButton value="Speichern" action="#{artikelController.save()}" />
+        <h:commandButton value="Speichern" action="#{artikelController.save}" />
       </h:panelGrid>
-
-      <h:commandButton value="test" />
     </h:form>
 
   <p id="fussnote">Bitte beachten Sie: <br /> Diese Seite ist nur ein Entwurf!</p>
