@@ -2,9 +2,11 @@ package com.example;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Artikel {
@@ -17,6 +19,9 @@ public class Artikel {
     private String bild;
     @Temporal(TemporalType.DATE)
     private Date verfuegbarAb;
+
+    @OneToMany
+    List<Bewertung> bewertungen;
 
     public Artikel() {
     }
@@ -71,6 +76,14 @@ public class Artikel {
 
     public void setVerfuegbarAb(Date verfuegbarAb) {
         this.verfuegbarAb = verfuegbarAb;
+    }
+
+    public List<Bewertung> getBewertungen() {
+        return bewertungen;
+    }
+
+    public void setBewertungen(List<Bewertung> bewertungen) {
+        this.bewertungen = bewertungen;
     }
 
 }

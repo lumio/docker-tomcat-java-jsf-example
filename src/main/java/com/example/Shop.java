@@ -48,6 +48,16 @@ public class Shop {
     em.close();
   }
 
+  public void saveRatingForArticle(Bewertung bewertung, Artikel artikel) {
+    artikel.getBewertungen().add(bewertung);
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction t = em.getTransaction();
+    t.begin();
+    em.persist(bewertung);;
+    em.merge(artikel);
+    t.commit();
+  }
+
   public List<Artikel> getSortiment() {
     EntityManager em = emf.createEntityManager();
     Query q = em.createQuery("select a from Artikel a");
