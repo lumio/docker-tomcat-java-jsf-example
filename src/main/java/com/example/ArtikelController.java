@@ -52,6 +52,11 @@ public class ArtikelController {
     return Shop.getInstance().getSortiment().get(index);
   }
 
+  public String removeRating(Bewertung rating) {
+    Shop.getInstance().removeRatingForArticle(rating, getArtikel());
+    return "";
+  }
+
   public void vor(){
     if (index < Shop.getInstance().getSortiment().size()-1) {
       index++;

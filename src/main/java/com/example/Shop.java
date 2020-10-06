@@ -58,6 +58,24 @@ public class Shop {
     t.commit();
   }
 
+  public void removeRatingForArticle(Bewertung rating, Artikel artikel) {
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction t = em.getTransaction();
+    t.begin();
+    artikel = em.merge(artikel);
+    rating = em.merge(rating);
+    t.commit();
+
+    artikel.getBewertungen().remove(rating);
+
+    t.begin();
+    em.merge(artikel);
+    em.remove(rating);
+    t.commit();
+
+    em.close();
+  }
+
   public List<Artikel> getSortiment() {
     EntityManager em = emf.createEntityManager();
     Query q = em.createQuery("select a from Artikel a");
