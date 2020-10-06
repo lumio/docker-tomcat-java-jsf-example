@@ -24,10 +24,11 @@ public class Shop {
   // private List<Artikel> sortiment = new ArrayList<Artikel>();
   private List<Benutzer> benutzer = new ArrayList<Benutzer>();
   private static Shop instance = new Shop();
-  private final static EntityManagerFactory emf = Persistence.createEntityManagerFactory("onlineshop");
+  // private final static EntityManagerFactory emf = Persistence.createEntityManagerFactory("onlineshop");
+  private ArtikelDAO artikelDao;
 
   public Shop() {
-
+    artikelDao = new ArtikelDAO();
     // sortiment.add(new Artikel(1000, "Pantoffeln \"Rudolph\"",
     //         "Wunderschöne Filzpantoffeln", "filzschuhe.jpg", (new GregorianCalendar(2012, 11, 23).getTime())));
     // sortiment.add(new Artikel(2000, "Handtasche \"Cosmopolita\"",
@@ -40,49 +41,19 @@ public class Shop {
   }
 
   public void saveArtikel(Artikel neuerArtikel) {
-    EntityManager em = emf.createEntityManager();
-    EntityTransaction t = em.getTransaction();
-    t.begin();
-    em.merge(neuerArtikel);
-    t.commit();
-    em.close();
+    artikelDao.saveArtikel(neuerArtikel);
   }
 
   public void saveRatingForArticle(Bewertung bewertung, Artikel artikel) {
-    artikel.getBewertungen().add(bewertung);
-    EntityManager em = emf.createEntityManager();
-    EntityTransaction t = em.getTransaction();
-    t.begin();
-    em.persist(bewertung);;
-    em.merge(artikel);
-    t.commit();
+    artikelDao.saveRatingForArticle(bewertung, artikel);
   }
 
   public void removeRatingForArticle(Bewertung rating, Artikel artikel) {
-    EntityManager em = emf.createEntityManager();
-    EntityTransaction t = em.getTransaction();
-    t.begin();
-    artikel = em.merge(artikel);
-    rating = em.merge(rating);
-    t.commit();
-
-    artikel.getBewertungen().remove(rating);
-
-    t.begin();
-    em.merge(artikel);
-    em.remove(rating);
-    t.commit();
-
-    em.close();
+    artikelDao.removeRatingForArticle(rating, artikel);
   }
 
   public List<Artikel> getSortiment() {
-    EntityManager em = emf.createEntityManager();
-    Query q = em.createQuery("select a from Artikel a");
-    List<Artikel> artikel = q.getResultList();
-    System.out.print(artikel);
-    return artikel;
-    // return sortiment;
+    return artikelDao.findAll();
   }
 
   public List<Benutzer> getBenutzer() {

@@ -16,6 +16,7 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update" />
 
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/> <!-- TODO: anti pattern! will do for now -->
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
         </properties>
