@@ -57,7 +57,11 @@
           <ui:repeat value="#{artikelController.artikel.bewertungen}" var="bewertung">
             <div>
               <h:outputText value="#{bewertung.sterne} Stern(e)" />
-              <p><h:outputText value="#{bewertung.kommentar}" /></p>
+              <p>
+                <h:outputText value="#{bewertung.kommentar}" />
+                <h:commandButton value="Remove"
+                  action="#{artikelController.removeRating(bewertung)}" />
+              </p>
             </div>
           </ui:repeat>
         </h:panelGrid>
